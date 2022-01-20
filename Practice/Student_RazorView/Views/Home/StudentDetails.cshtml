@@ -1,0 +1,90 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>StudentDetails</title>
+</head>
+<body>
+    @{ 
+        string StudentResult;
+        if(ViewBag.Marks>=35)
+        {
+            StudentResult = "Pass";
+        }
+        else
+        {
+            StudentResult = "Fail";
+        }
+    }
+    <div> 
+        <table class="table">
+            <tr>
+                <td>Student Id</td>
+                <td>@ViewBag.StudentId</td>
+            </tr>
+            <tr>
+                <td>Student Name</td>
+                <td>@ViewBag.StudentName</td>
+            </tr>
+            <td>Student Marks</td>
+            <td>@ViewBag.Marks</td>
+            </tr>
+
+            </tr>
+            <td>Result</td>
+            <td>@StudentResult</td>
+            </tr>
+
+
+            <tr>
+                <td colspan="2">
+                    @if (StudentResult == "Pass")
+                    {
+                        <span class="text-success">Congratulations</span>
+                    }
+                    else
+                    {
+                        <span class="text-danger">Better Luck Next Time</span>
+
+                    }
+                </td>
+            </tr>
+
+            <tr>
+                <td>semesters</td>
+
+                <td>
+                    <ul>
+                        @for (int i = 1; i <= 6; i++)
+                        {
+                            <li><span>@i</span></li>
+
+                        }
+                    </ul>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>subjects</td>
+
+                <td>
+                    <ul>
+                        @foreach (var subject in ViewBag.Subjects)
+                        {
+                            <li><span>@subject</span></li>
+
+                        }
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
