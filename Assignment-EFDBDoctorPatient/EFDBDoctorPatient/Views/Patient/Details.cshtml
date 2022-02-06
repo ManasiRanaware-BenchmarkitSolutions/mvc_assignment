@@ -1,0 +1,66 @@
+﻿@model EFDBDoctorPatient.Models.Patient
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Details</h2>
+
+<table class="table">
+    <tr>
+        <th>Patient ID</th>
+        <td>@Model.PatientID</td>
+    </tr>
+    <tr>
+        <th>Patient Name</th>
+        <td>@Model.PatientName</td>
+    </tr>
+    <tr>
+        <th>Age</th>
+        <td>
+            @if (Model.Age.HasValue)
+            {
+                <span>@Model.Age.Value.ToString("g")</span>
+            }
+        </td>
+    </tr>
+    <tr>
+        <th>Date of Admission</th>
+        <td>
+            @if (Model.DOA.HasValue)
+            {
+                <span>@Model.DOA.Value.ToString("d/M/yyyy")</span>
+            }
+        </td>
+    </tr>
+    <tr>
+        <th>Gender</th>
+        <td>@Model.Gender</td>
+    </tr>
+    <tr>
+        <th>Address</th>
+        <td>@Model.Address</td>
+    </tr>
+    <tr>
+        <th>Contact</th>
+        <td>@Model.Contact</td>
+    </tr>
+    <tr>
+        <th>Doctor </th>
+        <td>
+            @if (Model.Doctor != null)
+            {
+                <span>@Model.Doctor.DoctorName</span>
+            }
+        </td>
+    </tr>
+    <tr>
+    
+    <tr>
+        <th>Photo</th>
+        <td><img src="data:image;base64,@Model.Photo" width="100px"></td>
+    </tr>
+</table>
+
+<a href="/patient/index">Back to Patients List</a>

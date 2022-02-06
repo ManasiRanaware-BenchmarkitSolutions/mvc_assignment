@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EFDBDDoctorPatientModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Doctor">
+    <Key>
+      <PropertyRef Name="DoctorID" />
+    </Key>
+    <Property Name="DoctorID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DoctorName" Type="varchar" MaxLength="50" />
+    <Property Name="Specialization" Type="varchar" MaxLength="50" />
+    <Property Name="Address" Type="varchar" MaxLength="50" />
+    <Property Name="Contact" Type="varchar" MaxLength="50" />
+    <Property Name="Photo" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Patient">
+    <Key>
+      <PropertyRef Name="PatientID" />
+    </Key>
+    <Property Name="PatientID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PatientName" Type="varchar" MaxLength="50" />
+    <Property Name="Gender" Type="varchar" MaxLength="50" />
+    <Property Name="Age" Type="int" />
+    <Property Name="Address" Type="varchar" MaxLength="50" />
+    <Property Name="Contact" Type="varchar" MaxLength="50" />
+    <Property Name="DOA" Type="datetime" />
+    <Property Name="DoctorID" Type="bigint" />
+    <Property Name="Photo" Type="varchar(max)" />
+  </EntityType>
+  <Association Name="FK__Patient__DoctorI__267ABA7A">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1" />
+    <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="DoctorID" />
+      </Principal>
+      <Dependent Role="Patient">
+        <PropertyRef Name="DoctorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EFDBDDoctorPatientModelStoreContainer">
+    <EntitySet Name="Doctor" EntityType="Self.Doctor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Patient__DoctorI__267ABA7A" Association="Self.FK__Patient__DoctorI__267ABA7A">
+      <End Role="Doctor" EntitySet="Doctor" />
+      <End Role="Patient" EntitySet="Patient" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

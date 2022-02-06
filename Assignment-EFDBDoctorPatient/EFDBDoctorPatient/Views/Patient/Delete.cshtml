@@ -1,0 +1,30 @@
+﻿@model EFDBDoctorPatient.Models.Patient
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Delete</h2>
+
+<form action="/patient/edit/@Model.PatientID" method="post">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="PatientName">Patient Name : </label>
+            <input type="hidden" name="PatientID" value="@Model.PatientID" /> @Model.PatientName
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="Age">Age : </label> @Model.Age
+        </div>
+        <div class="form-group col-md-6">
+            <label for="Gender">Gender : </label> @Model.Gender
+        </div>
+        <div class="form-group col-md-6">
+            <label for="DoctorName">DoctorName : </label> @Model.Doctor.DoctorName
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a class="btn btn-outline-danger" href="/patient/index">Cancel</a>
+</form>
