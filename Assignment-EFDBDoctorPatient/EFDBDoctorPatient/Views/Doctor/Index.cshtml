@@ -11,13 +11,24 @@
 <form action="/doctor/index">
     <div class="form-group">
         <a href="#" class="list-group-item text-white" style="background-color:transparent">Search Using...</a>
-        <ul class="list-group" style="background-color:transparent">
-            <li class="list-group-item" style="background-color:transparent"><input type="text" name="DoctorName" placeholder="Doctor Name" class="form-control" value="@ViewBag.DoctorName" /></li>
-            <li class="list-group-item" style="background-color:transparent"><input type="text" name="Address" placeholder="Address" class="form-control" value="@ViewBag.Address" /></li>
-            <li class="list-group-item" style="background-color:transparent"><input type="text" name="Specialization" placeholder="Specialization" class="form-control" value="@ViewBag.Specialization" /></li>
-            <li class="list-group-item" style="background-color:transparent"><button type="submit" class="btn btn-primary" style="margin-left:60px">Go</button></li>
-        </ul>
-    </div>
+        <div class="row">
+            <div class="col">
+                <input type="text" name="DoctorName" placeholder="Doctor Name" class="form-control" value="@ViewBag.DoctorName" />
+            </div>
+            <div class="col">
+                <input type="text" name="Address" placeholder="Address" class="form-control" value="@ViewBag.Address" />
+            </div>
+            <div class="col">
+                <input type="text" name="Specialization" placeholder="Specialization" class="form-control" value="@ViewBag.Specialization" />
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-outline-dark">Search</button>
+            </div>
+            <hr />
+            @*<div class="col"
+          <button type="submit" class="btn btn-primary" style="margin-left:60px">Go</button>
+        </div>*@
+        </div>
 </form>
 
 
