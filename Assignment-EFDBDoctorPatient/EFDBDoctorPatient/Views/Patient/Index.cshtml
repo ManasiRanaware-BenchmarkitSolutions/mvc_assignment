@@ -10,15 +10,24 @@
 <a class="btn btn-primary" href="/patient/create">Create</a>
 <form action="/patient/index">
     <div class="form-group">
-        <a href="#" class="list-group-item text-white" style="background-color:transparent">Search Using...</a>
-        <ul class="list-group" style="background-color:transparent">
-            <li class="list-group-item" style="background-color:transparent"><input type="text" name="PatientName" placeholder="Patient Name" class="form-control" value="@ViewBag.PatientNameName" /></li>
-            <li class="list-group-item" style="background-color:transparent"><input type="text" name="Address" placeholder="Address" class="form-control" value="@ViewBag.Address" /></li>
-            <li class="list-group-item" style="background-color:transparent"><input type="text" name="DoctorName" placeholder="DoctorName" class="form-control" value="@ViewBag.DoctorName" /></li>
-            <li class="list-group-item" style="background-color:transparent"><button type="submit" class="btn btn-primary" style="margin-left:60px">Go</button></li>
-        </ul>
-    </div>
+        <a href="#" class="list-group-item text-black" style="background-color:transparent">Search based on following attributes</a>
+        <div class="row">
+            <div class="col">
+                <input type="text" name="PatientName" placeholder="Patient Name" class="form-control" value="@ViewBag.PatientNameName" />
+            </div>
+            <div class="col">
+                <input type="text" name="Address" placeholder="Address" class="form-control" value="@ViewBag.Address" />
+            </div>
+            <div class="col">
+                <input type="text" name="DoctorName" placeholder="DoctorName" class="form-control" value="@ViewBag.DoctorName" />
+            </div>
+            @*<button type="submit" class="btn btn-primary" style="margin-left:60px">Go</button>*@
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-outline-dark">Search</button>
+        </div>
 </form>
+
 
 
 <table class="table">
