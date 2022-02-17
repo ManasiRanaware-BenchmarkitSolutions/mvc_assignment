@@ -1,0 +1,326 @@
+﻿@model List<EFDBDoctorPatient.Models.Patient>
+
+@{
+    ViewBag.Title = "Patients";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>List Of Patients</h2>
+
+<a class="btn btn-primary" href="/patient/create">Create</a>
+<form action="/patient/index">
+    <div class="form-group">
+        <a href="#" class="list-group-item text-black" style="background-color:transparent">Search based on following attributes</a>
+        <div class="row">
+            <div class="col">
+                <input type="text" name="PatientName" placeholder="Patient Name" class="form-control" value="@ViewBag.PatientNameName" />
+            </div>
+            <div class="col">
+                <input type="text" name="Address" placeholder="Address" class="form-control" value="@ViewBag.Address" />
+            </div>
+            <div class="col">
+                <input type="text" name="DoctorName" placeholder="DoctorName" class="form-control" value="@ViewBag.DoctorName" />
+            </div>
+            @*<button type="submit" class="btn btn-primary" style="margin-left:60px">Go</button>*@
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-outline-dark">Search</button>
+        </div></div>
+</form>
+
+
+<table class="table">
+    <tr class="table-secondary">
+        @*<th style="width:15%">
+            Photo
+        </th>*@
+        <th style="width:5%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="/patient/index?SortColumn=PatientID & IconClass=fa-sort-asc&PageNo=1">Patient ID</a>
+                if (ViewBag.SortColumn == "PatientID")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+            else
+            {
+                <a href="/patient/index?SortColumn=PatientID & IconClass=fa-sort-desc&PageNo=1">Patient ID</a>
+                if (ViewBag.SortColumn == "PatientID")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+        </th>
+        <th style="width:10%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="/patient/index?SortColumn=PatientName & IconClass=fa-sort-asc&PageNo=1">Patient Name</a>
+                if (ViewBag.SortColumn == "PatientName")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+            else
+            {
+                <a href="/patient/index?SortColumn=PatientName & IconClass=fa-sort-desc&PageNo=1">Patient Name</a>
+                if (ViewBag.SortColumn == "PatientName")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+        </th>
+        <th style="width:5%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="/patient/index?SortColumn=Age & IconClass=fa-sort-asc&PageNo=1">Age</a>
+                if (ViewBag.SortColumn == "Age")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+            else
+            {
+                <a href="/patient/index?SortColumn=Age & IconClass=fa-sort-desc&PageNo=1">Age</a>
+                if (ViewBag.SortColumn == "Age")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+        </th>
+        <th style="width:10%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="/patient/index?SortColumn=DOA & IconClass=fa-sort-asc&PageNo=1">Date Of Admission</a>
+                if (ViewBag.SortColumn == "DOA")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+            else
+            {
+                <a href="/patient/index?SortColumn=DOA & IconClass=fa-sort-desc&PageNo=1">Date Of Admission</a>
+                if (ViewBag.SortColumn == "DOA")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+        </th>
+        <th style="width:5%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="/patient/index?SortColumn=Gender & IconClass=fa-sort-asc&PageNo=1">Gender</a>
+                if (ViewBag.SortColumn == "Gender")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+            else
+            {
+                <a href="/patient/index?SortColumn=Gender & IconClass=fa-sort-desc&PageNo=1">Gender</a>
+                if (ViewBag.SortColumn == "Gender")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+        </th>
+
+        <th style="width:10%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="/patient/index?SortColumn=Address & IconClass=fa-sort-asc&PageNo=1">Address</a>
+                if (ViewBag.SortColumn == "Address")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+            else
+            {
+                <a href="/patient/index?SortColumn=Address & IconClass=fa-sort-desc&PageNo=1">Address</a>
+                if (ViewBag.SortColumn == "Address")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+        </th>
+        <th style="width:10%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="/patient/index?SortColumn=Contact & IconClass=fa-sort-asc&PageNo=1">Contact No</a>
+                if (ViewBag.SortColumn == "Contact")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+            else
+            {
+                <a href="/patient/index?SortColumn=Contact & IconClass=fa-sort-desc&PageNo=1">Contact No</a>
+                if (ViewBag.SortColumn == "Contact")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+        </th>
+        <th style="width:10%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="/patient/index?SortColumn=DoctorID & IconClass=fa-sort-asc&PageNo=1">Doctor Name</a>
+                if (ViewBag.SortColumn == "DoctorID")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+            else
+            {
+                <a href="/patient/index?SortColumn=DoctorID & IconClass=fa-sort-desc&PageNo=1">Doctor Name</a>
+                if (ViewBag.SortColumn == "DoctorID")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+        </th>
+        <th style="width:10%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="/patient/index?SortColumn=MedicineID & IconClass=fa-sort-asc&PageNo=1">Medicine Name</a>
+                if (ViewBag.SortColumn == "MedicineID")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+            else
+            {
+                <a href="/patient/index?SortColumn=MedicineID & IconClass=fa-sort-desc&PageNo=1">Medicine Name</a>
+                if (ViewBag.SortColumn == "MedicineID")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+<tr>
+    @*<td><img src="data:image;base64,@item.Photo" width="100px"></td>*@
+    <td>@item.PatientID</td>
+    <td>@item.PatientName</td>
+    <td>
+        @if (item.Age.HasValue)
+        {<span>@item.Age.Value.ToString("G")</span>}
+    </td>
+    <td>
+        @if (item.DOA.HasValue)
+        {<span>@item.DOA.Value.ToString("d/M/yyyy")</span>}
+    </td>
+    <td>@item.Gender</td>
+    <td>@item.Address</td>
+    <td>@item.Contact</td>
+    <td>
+        @if (item.Doctor != null)
+        {<span>@item.Doctor.DoctorName</span>}
+    </td>
+    <td>
+        @if (item.Medicine != null)
+        {<span>@item.Medicine.MedicineName</span>}
+    </td>
+
+    <td>
+        <a class="btn btn-primary" href="/patient/details/@item.PatientID">Details</a> |
+        <a class="btn btn-primary" href="/patient/edit/@item.PatientID">Edit</a> |
+        <a class="btn btn-danger" href="#" onclick="ConfirmDelete(@item.PatientID)">Delete</a>|
+        <a class="btn btn-primary" href="/patient/report/@item.PatientID">Report</a>|
+
+        @*<a class="btn btn-primary" href="/patient/delete/@item.PatientID">Delete</a> |*@
+
+    </td>
+</tr>
+    }
+
+    <tr>
+        <td colspan="9">
+            @{
+                int PrevPageNo = ViewBag.PageNo - 1;
+                if (PrevPageNo <= 0)
+                {
+                    PrevPageNo = 1;
+                }
+
+                int NextPageNo = ViewBag.PageNo + 1;
+                if (NextPageNo > ViewBag.NoOfPages)
+                {
+                    NextPageNo = ViewBag.NoOfPages;
+                }
+            }
+
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    <a class="page-link" href="/patient/index?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&PageNo=@PrevPageNo">Prev</a>
+                </li>
+
+                @for (int i = 0; i < ViewBag.NoOfPages; i++)
+                {
+                    if ((i + 1) == ViewBag.PageNo)
+                    {
+                        <li class="page-item active">
+                            <a class="page-link" href="/patient/index?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&PageNo=@(i+1)">@(i+1)</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item a">
+                            <a class="page-link" href="/patient/index?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&PageNo=@(i+1)">@(i+1)</a>
+                        </li>
+                    }
+
+                }
+                <li class="page-item">
+                    <a class="page-link" href="/patient/index?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&PageNo=@NextPageNo">Next</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+</table>
+
+
+<script>
+
+    var ConfirmDelete = function (PatientID) {
+
+        jQuery('#hiddenPatientID').val(PatientID);
+        $("#myModal").modal('show');
+
+    }
+
+    var Delete = function () {
+
+        $("#loaderDiv").show();
+
+        var PatientID = $("#hiddenPatientID").val();
+
+        $.ajax({
+
+            type: "POST",
+            url: "/Patient/Delete",
+            data: { did: PatientID },
+            success: function (result) {
+                $("#loaderDiv").hide();
+                $("#myModal").modal("hide");
+                $("#row_" + PatientID).remove();
+
+            }
+
+        })
+
+    }
+    var cancel = function () {
+        $("#myModal").modal("hide");
+    }
+    $(document).ready(function () {
+
+        $("p").on("click", function () {
+            $(this).hide();
+        });
+    });
+
+</script>
+

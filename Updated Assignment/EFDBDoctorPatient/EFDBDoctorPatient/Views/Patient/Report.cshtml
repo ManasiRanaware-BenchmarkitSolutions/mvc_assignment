@@ -1,0 +1,95 @@
+﻿@model EFDBDoctorPatient.Models.Patient
+
+@{
+    ViewBag.Title = "Report";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+<div class="card" style="margin-left:600px; margin-top:30px; max-width:400px; ">
+    <div class="card-body">
+        <h2 style="text-align:center">Patient Report</h2>
+
+        <table>
+            <tr >
+                <th>Patient ID</th>
+                <td style="padding:5px">@Model.PatientID</td>
+            </tr><br />
+            <tr>
+                <th>Patient Name</th>
+                <td style="padding:7px">@Model.PatientName</tdstyle="padding:5px">
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td style="padding:7px">
+                    @if (Model.Age.HasValue)
+                    {
+                        <span>@Model.Age.Value.ToString("g")</span>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <th>Date of Admission</th>
+                <td style="padding:7px">
+                    @if (Model.DOA.HasValue)
+                    {
+                        <span>@Model.DOA.Value.ToString("d/M/yyyy")</span>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td style="padding:7px">@Model.Gender</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td style="padding:7px">@Model.Address</td>
+            </tr>
+            <tr>
+                <th>Contact</th>
+                <td style="padding:7px">@Model.Contact</td>
+            </tr>
+            <tr>
+                <th>Doctor Assigned</th>
+                <td style="padding:7px">
+                    @if (Model.Doctor != null)
+                    {
+                        <span>@Model.Doctor.DoctorName</span>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <th>Doctor Specialization</th>
+                <td style="padding:7px">
+                    @if (Model.Doctor != null)
+                    {
+                        <span>@Model.Doctor.Specialization</span>
+                    }
+                </td>
+            </tr>
+            <tr>
+
+            <tr>
+                <th>Priscription</th>
+                <td style="padding:7px">
+                    @if (Model.Medicine != null)
+                    {
+                        <span>@Model.Medicine.MedicineName</span>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <th>Medicine Description</th>
+                <td style="padding:7px">
+                    @if (Model.Medicine != null)
+                    {
+                        <span>@Model.Medicine.Description</span>
+                    }
+                </td>
+            </tr>
+
+        </table>
+        <a class="btn btn-secondary" style="margin-left:300px" href="/patient/index">Back</a>
+    </div>
+    </div>
+
